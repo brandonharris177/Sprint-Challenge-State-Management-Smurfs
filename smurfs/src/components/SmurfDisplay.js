@@ -30,17 +30,17 @@ const SmurfDisplay = (props) => {
        
         <form onSubmit = {handleSubmit}>
             <input 
-                name = "smurfName" 
+                name = "name" 
                 type = "text" 
                 placeholder = "Smurf Name"
                 onChange = {handleChange}/>
             <input 
-                name = "smurfAge" 
+                name = "age" 
                 type = "number" 
                 placeholder = "Smurf Age"
                 onChange = {handleChange}/>
             <input 
-                name = "smurfHeight" 
+                name = "height" 
                 type = "number" 
                 placeholder = "Smurf Height (cm)"
                 onChange = {handleChange}/>

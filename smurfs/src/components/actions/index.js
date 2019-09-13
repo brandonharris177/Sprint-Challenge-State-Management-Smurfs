@@ -22,6 +22,7 @@ export const getSmurfs = () => dispatch => {
 };
 
 export const submitSmurf = (newSmurf) => dispatch => {
+  console.log(newSmurf)
   dispatch({ type: SUBMITTING_SMURF_START });
   axios
     .post("http://localhost:3333/smurfs", newSmurf)
