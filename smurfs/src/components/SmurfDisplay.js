@@ -16,7 +16,7 @@ const SmurfDisplay = (props) => {
     
     return (
         <>
-        <div>Its working</div>
+        <h1>Village</h1>
         {props.loading && (<div>Incoming Smurf!</div>)}
         {props.smurfs && props.smurfs.map(smurf =>
             // console.log(smurf),
