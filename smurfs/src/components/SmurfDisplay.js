@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {getSmurfs, submitSmurf} from './actions';
 
 const SmurfDisplay = (props) => {
-    const [newSmurf, setNewSmurf] = useState({name: "", age: "", height: ""})
+    const [newSmurf, setNewSmurf] = useState({name: '', age: '', height: ''})
 
     const handleChange = (event) => {
         setNewSmurf({...newSmurf, [event.target.name]: event.target.value})
@@ -20,7 +20,7 @@ const SmurfDisplay = (props) => {
         {props.loading && (<div>Incoming Smurf!</div>)}
         {props.smurfs && props.smurfs.map(smurf =>
             // console.log(smurf),
-            <div key = {smurf.id}>
+            <div>
             <h2>{smurf.name}</h2>
             <h2>{smurf.age}</h2>
             <h2>{smurf.height}</h2>
@@ -41,7 +41,7 @@ const SmurfDisplay = (props) => {
                 onChange = {handleChange}/>
             <input 
                 name = "height" 
-                type = "number" 
+                type = "text" 
                 placeholder = "Smurf Height (cm)"
                 onChange = {handleChange}/>
             <button>Submit Smurf</button>

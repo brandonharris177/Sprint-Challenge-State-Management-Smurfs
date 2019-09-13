@@ -40,7 +40,9 @@ const reducer = (state= initialState, action) => {
         case SUBMITTING_SMURF_FAILURE:
                 return {
                     ...state,
-                    loading: false
+                    loading: false,
+                    // smurfs: [...state.smurfs,
+                    // action.payload]
                 }
         default: return state;
     }

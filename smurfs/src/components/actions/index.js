@@ -25,9 +25,13 @@ export const submitSmurf = (newSmurf) => dispatch => {
   console.log(newSmurf)
   dispatch({ type: SUBMITTING_SMURF_START });
   axios
-    .post("http://localhost:3333/smurfs", newSmurf)
+    .post("http://localhost:3333/smurfs", {
+      name: newSmurf.name,
+      age: newSmurf.age,
+      height: newSmurf.height
+    })
     .then(res => {
-      // console.log(res.data)
+      console.log(res.data)
       dispatch({ type: SUBMITTING_SMURF_SUCCESS, payload: res.data });
     })
     .catch(error => {
