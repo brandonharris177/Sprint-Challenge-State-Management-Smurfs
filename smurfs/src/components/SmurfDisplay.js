@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { connect } from 'react-redux';
 import {getSmurfs} from './actions';
 
 const SmurfDisplay = (props) => {
+    const [newSmurf, setNewSmurf] = useState({name: "", age: "", height: ""})
+
+    const handleChange = (event) => {
+        setNewSmurf({...newSmurf, [event.target.name]: event.target.value})
+    }
     
     return (
         <>
@@ -17,6 +22,24 @@ const SmurfDisplay = (props) => {
             </div>
         )}
         <button onClick={props.getSmurfs}>Get Smurfs</button>
+       
+        <form>
+            <input 
+                name = "smurfName" 
+                type = "text" 
+                placeholder = "Smurf Name"
+                onChange = {handleChange}/>
+            <input 
+                name = "smurfAge" 
+                type = "number" 
+                placeholder = "Smurf Age"
+                onChange = {handleChange}/>
+            <input 
+                name = "smurfHeight" 
+                type = "number" 
+                placeholder = "Smurf Height(cm)"
+                onChange = {handleChange}/>
+        </form>
         </>
     )
 }
