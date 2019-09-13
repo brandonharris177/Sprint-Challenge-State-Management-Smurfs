@@ -12,6 +12,7 @@ const SmurfDisplay = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         props.submitSmurf(newSmurf)
+        props.getSmurfs()
     }
     
     return (
