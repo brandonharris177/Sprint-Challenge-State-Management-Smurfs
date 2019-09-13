@@ -1,6 +1,4 @@
-//import {GETING_SMURF_START, GETING_SMURF_SUCCESS, GETING_SMURF_FAILURE} from '../actions'
-
-import {GETING_SMURF_START, GETING_SMURF_SUCCESS, GETING_SMURF_FAILURE} from '../actions'
+import {GETTING_SMURF_START, GETTING_SMURF_SUCCESS, GETTING_SMURF_FAILURE, SUBMITTING_SMURF_START, SUBMITTING_SMURF_SUCCESS, SUBMITTING_SMURF_FAILURE} from '../actions'
 
 const initialState = { 
     smurfs: [],
@@ -9,12 +7,12 @@ const initialState = {
 
 const reducer = (state= initialState, action) => {
     switch (action.type) {
-        case GETING_SMURF_START:
+        case GETTING_SMURF_START:
             return {
                 ...state,
                 loading: true
             }
-        case GETING_SMURF_SUCCESS:
+        case GETTING_SMURF_SUCCESS:
             // console.log(action.payload)
                 return {
                     ...state,
@@ -22,7 +20,24 @@ const reducer = (state= initialState, action) => {
                     smurfs: action.payload
                 }
 
-        case GETING_SMURF_FAILURE:
+        case GETTING_SMURF_FAILURE:
+                return {
+                    ...state,
+                    loading: false
+                }
+                case SUBMITTING_SMURF_START:
+            return {
+                ...state,
+                loading: true
+            }
+        case SUBMITTING_SMURF_SUCCESS:
+            // console.log(action.payload)
+                return {
+                    ...state,
+                    loading: false,
+                }
+
+        case SUBMITTING_SMURF_FAILURE:
                 return {
                     ...state,
                     loading: false

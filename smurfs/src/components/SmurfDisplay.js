@@ -1,12 +1,17 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux';
-import {getSmurfs} from './actions';
+import {getSmurfs, submitSmurf} from './actions';
 
 const SmurfDisplay = (props) => {
     const [newSmurf, setNewSmurf] = useState({name: "", age: "", height: ""})
 
     const handleChange = (event) => {
         setNewSmurf({...newSmurf, [event.target.name]: event.target.value})
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        props.submitSmurf(newSmurf)
     }
     
     return (
@@ -23,7 +28,7 @@ const SmurfDisplay = (props) => {
         )}
         <button onClick={props.getSmurfs}>Get Smurfs</button>
        
-        <form>
+        <form onSubmit = {handleSubmit}>
             <input 
                 name = "smurfName" 
                 type = "text" 
@@ -37,8 +42,9 @@ const SmurfDisplay = (props) => {
             <input 
                 name = "smurfHeight" 
                 type = "number" 
-                placeholder = "Smurf Height(cm)"
+                placeholder = "Smurf Height (cm)"
                 onChange = {handleChange}/>
+            <button>Submit Smurf</button>
         </form>
         </>
     )
@@ -52,4 +58,4 @@ const mapStateToProps = state => {
     }
   }
   
-  export default connect(mapStateToProps, {getSmurfs})(SmurfDisplay);
+  export default connect(mapStateToProps, {getSmurfs, submitSmurf})(SmurfDisplay);

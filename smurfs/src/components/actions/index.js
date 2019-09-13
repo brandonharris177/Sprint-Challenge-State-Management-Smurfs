@@ -1,18 +1,35 @@
 import axios from "axios";
 
-export const GETING_SMURF_START = "GETING_SMURF_START";
-export const GETING_SMURF_SUCCESS = "GETING_SMURF_SUCCESS";
-export const GETING_SMURF_FAILURE = "GETING_SMURF_FAILURE";
+export const GETTING_SMURF_START = "GETTING_SMURF_START";
+export const GETTING_SMURF_SUCCESS = "GETTING_SMURF_SUCCESS";
+export const GETTING_SMURF_FAILURE = "GETTING_SMURF_FAILURE";
+
+export const SUBMITTING_SMURF_START = "SUBMITTING_SMURF_START";
+export const SUBMITTING_SMURF_SUCCESS = "SUBMITTING_SMURF_SUCCESS";
+export const SUBMITTING_SMURF_FAILURE = "SUBMITTING_SMURF_FAILURE";
 
 export const getSmurfs = () => dispatch => {
-  dispatch({ type: GETING_SMURF_START });
+  dispatch({ type: GETTING_SMURF_START });
   axios
     .get("http://localhost:3333/smurfs")
     .then(res => {
       // console.log(res.data)
-      dispatch({ type: GETING_SMURF_SUCCESS, payload: res.data });
+      dispatch({ type: GETTING_SMURF_SUCCESS, payload: res.data });
     })
     .catch(error => {
-      dispatch({ type: GETING_SMURF_FAILURE });
+      dispatch({ type: GETTING_SMURF_FAILURE });
+    });
+};
+
+export const submitSmurf = (newSmurf) => dispatch => {
+  dispatch({ type: SUBMITTING_SMURF_START });
+  axios
+    .post("http://localhost:3333/smurfs", newSmurf)
+    .then(res => {
+      // console.log(res.data)
+      dispatch({ type: SUBMITTING_SMURF_SUCCESS, payload: res.data });
+    })
+    .catch(error => {
+      dispatch({ type: SUBMITTING_SMURF_FAILURE });
     });
 };
